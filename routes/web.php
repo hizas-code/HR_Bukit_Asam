@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'TransactionController@viewTransaction');
+Route::get('/create', 'TransactionController@createTransaction');
+Route::post('/create', 'TransactionController@insertTransaction');

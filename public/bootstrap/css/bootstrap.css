@@ -142,6 +142,7 @@ input::-moz-focus-inner {
 }
 input {
   line-height: normal;
+  display: block;
 }
 input[type="checkbox"],
 input[type="radio"] {
@@ -247,6 +248,7 @@ th {
   }
   .label {
     border: 1px solid #000;
+    width: 200px;
   }
   .table {
     border-collapse: collapse !important;
@@ -2510,6 +2512,7 @@ label {
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
+  width:200px;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -4853,6 +4856,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+  width:200px;
 }
 a.label:hover,
 a.label:focus {
