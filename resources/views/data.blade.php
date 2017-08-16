@@ -3,8 +3,9 @@
         <div class="container">
             <h2>Daftar Transkasi</h2>
             <form method="get" action="{{url('create')}}">
-                <button type="submit" class="btn btn-success pull-right"> Input Transaksi</button>
+                <button type="submit" class="btn btn-success pull-right"> Input Transaksi </button>
             </form>
+            <button type="submit" class="btn btn-danger pull-right" data-toggle="modal" data-target="#reset"> Reset </button>
             <br> <br>
             <table class="table" id="account_table">
                 <thead>
@@ -17,7 +18,7 @@
                     </tr>
                 </thead>
                 @php
-                    $x = $total+1;
+                    $x = $total++;
                 @endphp    
                 @foreach ($transactions as $transaction)
                 @php
@@ -38,7 +39,10 @@
                         </div>
                         <div class="col-md-3">
                             <td>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#detailModal">Detail</button>
+                                <form method="get" action="{{url('detail')}}">
+                                    <input type="hidden" id="id_transaksi" name="id_transaksi" value="{{$transaction->id}}">
+                                    <button type="submit" class="btn btn-success" >Detail</button>
+                                </form>
                             </td>
                         </div>
                     </tr>
@@ -46,19 +50,25 @@
             </table>
         </div>
 
-    <div id="detailModal" class="modal fade" role="dialog">
+    <div id="reset" class="modal fade" role="dialog">
         <div class="modal-dialog">
         <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Detail Transaksi</h4>
+                    <h4 class="modal-title">Reset Data</h4>
                 </div>
                 <div class="modal-body">
-                    
+                    <p> Yakin untuk menghapus semua data? </p>    
                 </div>
+                
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Tidak</button>
+                    <form method="post" action="{{url('reset')}}">
+                        {{csrf_field()}}
+                        <button type="submit" class="btn btn-danger pull-right"> Reset </button>
+                    </form>
+                    
                 </div>
             </div>
         </div>

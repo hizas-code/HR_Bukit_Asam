@@ -15,8 +15,15 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('nomor_struk')->signed();
-            $table->foreign('nomor_struk')->references('nomor_struk')->on('transactions');
+            $table->integer('id_transaksi')->signed()->on('transaksi')->onDelete('cascade');
+            $table->integer('aqua')->signed();
+            $table->integer('gula_pasir')->signed();
+            $table->integer('kopi')->signed();
+            $table->integer('teh')->signed();
+            $table->string('type_aqua');
+            $table->string('type_gula_pasir');
+            $table->string('type_kopi');
+            $table->string('type_teh');
             $table->timestamps();
         });
     }
